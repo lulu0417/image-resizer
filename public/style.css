@@ -1,0 +1,246 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #f0f2f5;
+    color: #333;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 32px 20px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 32px;
+    font-size: 28px;
+    color: #1a1a1a;
+}
+
+h2 {
+    font-size: 20px;
+    margin-bottom: 16px;
+    color: #1a1a1a;
+}
+
+section {
+    background: #fff;
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+
+.drop-zone {
+    border: 2px dashed #c0c4cc;
+    border-radius: 8px;
+    padding: 48px 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+    color: #909399;
+    font-size: 15px;
+}
+
+.drop-zone:hover,
+.drop-zone.drag-over {
+    border-color: #409eff;
+    background: #ecf5ff;
+    color: #409eff;
+}
+
+.file-list {
+    margin-top: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.file-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #f4f4f5;
+    border-radius: 4px;
+    padding: 4px 10px;
+    font-size: 13px;
+    color: #606266;
+}
+
+.file-tag .remove {
+    cursor: pointer;
+    color: #c0c4cc;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.file-tag .remove:hover { color: #f56c6c; }
+
+.settings-row {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 140px;
+}
+
+.field label {
+    font-size: 13px;
+    font-weight: 500;
+    color: #606266;
+}
+
+.field input,
+.field select {
+    padding: 8px 12px;
+    border: 1px solid #dcdfe6;
+    border-radius: 6px;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.field input:focus,
+.field select:focus {
+    border-color: #409eff;
+}
+
+.btn {
+    padding: 10px 24px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.btn:hover:not(:disabled) { opacity: 0.85; }
+
+.btn-primary { background: #409eff; color: #fff; }
+.btn-success { background: #67c23a; color: #fff; }
+
+.preview-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.preview-card {
+    border: 1px solid #ebeef5;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.preview-card .compare {
+    display: flex;
+    gap: 1px;
+    background: #ebeef5;
+}
+
+.preview-card .compare > div {
+    flex: 1;
+    background: #fff;
+    text-align: center;
+    padding: 8px;
+}
+
+.preview-card .compare img {
+    max-width: 100%;
+    max-height: 180px;
+    object-fit: contain;
+    border-radius: 4px;
+}
+
+.preview-card .compare .label {
+    font-size: 11px;
+    color: #909399;
+    margin-bottom: 4px;
+}
+
+.preview-card .info {
+    padding: 10px 12px;
+    font-size: 13px;
+    color: #606266;
+    border-top: 1px solid #ebeef5;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btn-download {
+    padding: 4px 12px;
+    border: 1px solid #409eff;
+    border-radius: 4px;
+    background: #fff;
+    color: #409eff;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-download:hover {
+    background: #409eff;
+    color: #fff;
+}
+
+.save-row {
+    display: flex;
+    gap: 12px;
+    align-items: flex-end;
+}
+
+.toast {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%) translateY(80px);
+    background: #333;
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 14px;
+    opacity: 0;
+    transition: transform 0.3s, opacity 0.3s;
+    z-index: 999;
+    pointer-events: none;
+}
+
+.toast.show {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+}
+
+.loading {
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+.spinner {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border: 2px solid #fff;
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: spin 0.6s linear infinite;
+    vertical-align: middle;
+    margin-right: 6px;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
